@@ -18,6 +18,11 @@ app.get('/hash/:id', (req, res) => {
     res.status(200).send(hash).end;
 });
 
+app.get('/vote/', (req, res) =>{
+    console.log(data)
+});
+
+
 
 
 // Start the server
