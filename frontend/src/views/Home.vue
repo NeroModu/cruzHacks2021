@@ -3,7 +3,7 @@
     <div>
       <img alt="Vue logo" src="../assets/logo.png">
     </div>
-    <div>
+    <button v-google-signin-button="clientID">
       <v-btn
         depressed
         color="primary"
@@ -16,7 +16,7 @@
         </v-icon>
         Sign In
       </v-btn>
-    </div>
+    </button>
   </div>
 </template>
 
@@ -25,6 +25,18 @@
 
 export default {
   name: 'Home',
+  data: () => ({
+    clientID: '910587914066-a79tgllt99stia0bqfihhhbf4vb3u812.apps.googleusercontent.com',
+  }),
+  methods: {
+    OnGoogleAuthSuccess (idToken) {
+      console.log(idToken)
+      // Receive the idToken and make your magic with the backend
+    },
+    OnGoogleAuthFail (error) {
+      console.log(error)
+    }
+  }
 }
 </script>
 
