@@ -17,13 +17,6 @@
         Sign In
       </v-btn>
     </button>
-    <v-btn
-        depressed
-        color="primary"
-        @click="OnGoogleSignOut"
-      >
-      SIgnout
-    </v-btn>
   </div>
 </template>
 
@@ -34,20 +27,18 @@ export default {
   name: 'Home',
   data: () => ({
     clientID: '910587914066-a79tgllt99stia0bqfihhhbf4vb3u812.apps.googleusercontent.com',
+    idToken: 'none'
   }),
   methods: {
     OnGoogleAuthSuccess(idToken) {
-      console.log(idToken)
-      axios.post("", idToken)
-        .then(response => {
-          // redirect to vote
-        })
-        .catch(error => {
-          // sign out & error modal
-        });
+      console.log(idToken);
+      this.idToken = idToken;
+      // redirect to vote
     },
     OnGoogleAuthFail(error) {
-      console.log(error)
+      console.log(error);
+      this.idToken = 'none';
+      // show error modal
     },
     OnGoogleSignOut() {
       var auth2 = gapi.auth2.getAuthInstance();
@@ -57,7 +48,19 @@ export default {
       
     },
 
-
+    sendVote(choice) {
+      voteObj = {
+        measureID: 1,
+        vote: choice
+      }
+      axios.post("", [this.idToken, voteObj])
+        .then(response => {
+          // show current results
+        })
+        .catch(error => {
+          // show error modal
+        });
+    }
   }
 }
 </script>
