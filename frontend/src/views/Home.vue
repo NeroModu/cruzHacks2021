@@ -53,7 +53,7 @@ export default {
         measureID: 1,
         vote: choice
       }
-      axios.post("", [this.idToken, voteObj])
+      axios.post("https://cruzhacks2021-301707.wl.r.appspot.com/verifyandvote", [this.idToken, voteObj])
         .then(response => {
           // show current results
         })
