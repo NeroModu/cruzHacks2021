@@ -1,0 +1,14 @@
+\.cache
+\.cloudcode
+\.config
+\.docker
+\.local
+\.npm
+\.theia
+.bash_history
+.bash_logout
+.bashrc
+.profile
+README-cloudshell.txt
+
+\frontend\node_modules
