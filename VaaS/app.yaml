@@ -1,0 +1,9 @@
+runtime: nodejs14
+
+handlers:
+- url: /
+  static_files: www/
+  upload: www/
+
+- url: /(.*)
+  script: auto
