@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 import GoogleSignInButton from 'vue-google-signin-button-directive'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 Vue.config.productionTip = false
 
@@ -15,5 +17,7 @@ new Vue({
     iconfont: 'mdi'
   },
   GoogleSignInButton,
+  VueAxios,
+  axios,
   render: h => h(App)
 }).$mount('#app')
