@@ -13,6 +13,7 @@
     "@truffle/hdwallet-provider": "^1.2.1",
     "crypto": "^1.0.1",
     "express": "^4.17.1",
+    "google-auth-library": "^6.1.4",
     "mocha": "^8.2.1",
     "truffle": "^5.1.62",
     "web3": "^1.3.1"
