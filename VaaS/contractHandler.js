@@ -66,6 +66,13 @@ async function getStandings(){
 }
 
 //castVote("myTestVote3", 1);
-retrieveAllVotes();
+//retrieveAllVotes();
 //userHasVoted("myTestVote0");
 //getStandings();
+
+module.exports = {
+    castVote,
+    retrieveAllVotes,
+    userHasVoted,
+    getStandings,
+}
