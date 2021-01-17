@@ -4,7 +4,6 @@ How can we ensure trust, transparency and auditability within elections?
 How does an individual verify that their vote was counted in the way intended while upholding voter privacy?
 How can we prevent double voting and voter fraud?
 
-
 Using smart contracts on the Ethereum blockchain, we have created a highly secure and transparent inter-organization voting system all while keeping the identity of those who voted private.
  
 Perhaps the biggest issue when it comes to voting on the blockchain is identity management.  Since identity verification is a complicated process that requires personal documentation such as IDs/SSN/Passports/birth certificates and more, we decided to leverage existing identity management infrastructure such as Google Authentication at launch with more planned to follow
@@ -17,7 +16,8 @@ For this MVP,  we made one poll available to all UCSC affiliated personnel. Logi
 
 VaaS does not store any information whatsoever and every vote cast is individually verifiable immediately. 
 
-![][(https://i.imgur.com/sxMTNy5.png)
+
+![](https://i.imgur.com/sxMTNy5.png)
 
 ---
 This is how VaaS works:
