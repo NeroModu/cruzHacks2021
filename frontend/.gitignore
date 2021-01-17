@@ -6,7 +6,6 @@
 # local env files
 .env.local
 .env.*.local
-/src/keys.js
 
 # Log files
 npm-debug.log*
