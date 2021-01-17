@@ -42,7 +42,7 @@ const retrieveAllVotes = async () => {
           voteJSON[ballot.uid] = ballot.choice;
       }
   }
-  console.log(voteJSON);
+//   console.log(voteJSON);
   return voteJSON;
 }
 
@@ -60,7 +60,7 @@ async function getStandings(){
             results["yes"] ++;
         }
     }
-
+    
     return results;
 
 }
@@ -69,6 +69,7 @@ async function getStandings(){
 //retrieveAllVotes();
 //userHasVoted("myTestVote0");
 //getStandings();
+
 
 module.exports = {
     castVote,
