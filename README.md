@@ -2,9 +2,10 @@
 
 **Check it out live**
 
-[VaaS.evdavalos.com](https://vaas.edavalos.com/)
+[VaaS.edavalos.com](https://vaas.edavalos.com/)
 
-[VaaS.ezramoussa.com](http://vaas.ezramoussa.com/)
+[alterternate-link](https://agitated-shockley-840958.netlify.app/)
+
 
 ### Abstract
 
@@ -12,7 +13,7 @@ How can we ensure trust, transparency and auditability within elections?
 How does an individual verify that their vote was counted in the way intended while upholding voter privacy?
 How can we prevent double voting and voter fraud?
 
-Using smart contracts on the Ethereum blockchain, we have created a highly secure and transparent inter-organization voting system all while keeping the identity of those who voted private.
+Using smart contracts on the Ethereum blockchain, we have created a highly secure and transparent inner-organization voting system all while keeping the identity of those who voted private.
  
 Perhaps the biggest issue when it comes to voting on the blockchain is identity management.  Since identity verification is a complicated process that requires personal documentation such as IDs/SSN/Passports/birth certificates and more, we decided to leverage existing identity management infrastructure such as Google Authentication at launch with more planned to follow
 
