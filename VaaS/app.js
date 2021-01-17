@@ -7,8 +7,22 @@ const contractHandler = require('./contractHandler.js');
 const express = require('express');
 const crypto = require('crypto');
 const hmac = "asjdhg374y3uiewh";
+const cors = require('cors');
 
 const app = express();
+
+
+// var whitelist = ['http://localhost8080', 'https://cruzhacks2021-301707.wl.r.appspot.com', 'https://8080-cs-286288504737-default.us-west1.cloudshell.dev']
+// var corsOptions = {
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.status(200).send('Hello, world!').end();
@@ -17,7 +31,7 @@ app.get('/', (req, res) => {
 app.get('/hash/:id', (req, res) => {
     let secret = req.params.id;
 
-    let hash = crypto.createHmac("sha256", "thisismysecretkey").update(hmac).digest("hex");
+    let hash = crypto.createHmac("sha256", hmac).update(secret).digest("hex");
 
     res.status(200).send(hash).end;
 });
@@ -29,7 +43,7 @@ app.get('/vote/', (req, res) =>{
 app.get('/verifyandvote/', (req, res) =>{
     console.log("tokensignin");
     console.log(req);
-
+    res.status(200).send("Hello").end;
     // res.status(200).send(req.data).end;
 
     // async function verify() {
