@@ -169,6 +169,7 @@ export default {
         })
         .catch(error => {
           // show error modal
+          console.log(error);
         });
     }
   }
