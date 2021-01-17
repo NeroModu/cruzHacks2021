@@ -1,5 +1,13 @@
 # Voting-as-a-Service
 
+**Check it out live**
+
+[VaaS.evdavalos.com](https://vaas.edavalos.com/)
+
+[VaaS.ezramoussa.com](http://vaas.ezramoussa.com/)
+
+### Abstract
+
 How can we ensure trust, transparency and auditability within elections?
 How does an individual verify that their vote was counted in the way intended while upholding voter privacy?
 How can we prevent double voting and voter fraud?
