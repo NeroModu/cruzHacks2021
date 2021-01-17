@@ -17,6 +17,8 @@ For this MVP,  we made one poll available to all UCSC affiliated personnel. Logi
 
 VaaS does not store any information whatsoever and every vote cast is individually verifiable immediately. 
 
+![][(https://i.imgur.com/sxMTNy5.png)
+
 ---
 This is how VaaS works:
 
