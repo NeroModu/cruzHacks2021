@@ -20,17 +20,15 @@
       </button>
     </div>
 
-    <div id="signedInView" >
-      <div>
-        <v-btn
-          depressed
-          color="primary"
-          @click="sendVote(true)"
-        >
-          Cast Votes
-        </v-btn>
+    <div id="signedInView" v-show="signedIn">
+      <div style="margin-bottom: 30px; margin-top: 10px">
+        Organization: UCSC
       </div>
+      <h2 style="margin-bottom: 20px">
+        Available Measures
+      </h2>
       <v-card 
+        style="margin-bottom: 10px"
         elevation="2"
         class="mx-auto vaas-card"
         max-width="500"
@@ -45,19 +43,52 @@
 
         <v-card-actions>
           <v-btn
-            color="orange lighten-2"
-            text
-          >
-            Explore
-          </v-btn>
-
-          <v-spacer></v-spacer>
-
-          <v-btn
             icon
             @click="measureInfo.show = !measureInfo.show"
           >
             <v-icon>{{ measureInfo.show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+          </v-btn>
+          <a href="https://kovan.etherscan.io/address/0x32078e498ce709b708230311c5f0dc5da89bacde" 
+             target="_blank" style="text-decoration: none;">
+            <v-btn
+              color="primary lighten-2"
+              text
+            >
+              View Contract
+            </v-btn>
+          </a>
+
+          <v-spacer></v-spacer>
+
+          <v-btn
+            v-show="(ballot[0].vote === null || !ballot[0].vote)"
+            @click="ballot[0].vote = true"
+            color="green lighten-2"
+            text
+          >
+            Yes
+          </v-btn>
+          <v-btn
+            v-show="(ballot[0].vote !== null && ballot[0].vote)"
+            color="green lighten-2"
+            depressed
+          >
+            Yes
+          </v-btn>
+          <v-btn
+            v-show="(ballot[0].vote === null || ballot[0].vote)"
+            @click="ballot[0].vote = false"
+            color="red lighten-2"
+            text
+          >
+            No
+          </v-btn>
+          <v-btn
+            v-show="(ballot[0].vote !== null && ballot[0].vote === false)"
+            color="red lighten-2"
+            depressed
+          >
+            No
           </v-btn>
         </v-card-actions>
 
@@ -71,6 +102,17 @@
           </div>
         </v-expand-transition>
       </v-card>
+
+      <div>
+        <v-btn
+          style="margin-bottom: 20px"
+          depressed
+          color="primary"
+          @click="sendVote(true)"
+        >
+          Cast Votes
+        </v-btn>
+      </div>
     </div>
   </div>
 </template>
@@ -98,13 +140,10 @@ export default {
   }),
   methods: {
     OnGoogleAuthSuccess(idToken) {
-      console.log(idToken);
       this.idToken = idToken;
       this.signedIn = true;
-      // redirect to vote
     },
     OnGoogleAuthFail(error) {
-      console.log(error);
       this.idToken = 'none';
       this.signedIn = false;
       // show error modal
