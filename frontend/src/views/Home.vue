@@ -3,10 +3,19 @@
     <div id="signedOutView" class="vaas-bg" v-show="!signedIn">
       <div class="vaas-heading">
         Voting-as-a-Service
-        <div style = "text-align: center, width: 50%">
-        <p style="font-size: 25px; padding-top: 40px">
+        <div style = "text-align: center, width: 100%">
+        <p style="font-size: 20px; padding-top: 40px">
           Using smart contracts on the Ethereum blockchain, VaaS provides a platform for highly secure, audible, transparent, and distributed inter-organization elections all while keeping the identity of those who voted private.
         </p>
+
+        <p style="font-size: 20px; padding-top: 10px">
+        View the project proposal <a href="https://docs.google.com/document/d/1kl3np1Oxa-HDxKufLXkK5HZXuTYkn-j4kKf-1q3z7kM/edit" target="_blank">here</a>
+        </p>
+
+        <p style="font-size: 20px; padding-top: 10px">
+          Currently, this VaaS demo is only avaivable to UCSC personnel. Sign in below with your UCSC email to vote or click below to view the poll results. 
+        </p>
+
         </div>
       </div>
       <button v-google-signin-button="clientID">
@@ -23,6 +32,25 @@
           Sign In
         </v-btn>
       </button>
+
+
+        <div style="margin-top:20px">
+        <button >
+        <v-btn
+          depressed
+          color="primary"
+          @click = "push();"
+        >
+          <v-icon
+            dark
+            left
+          >
+            mdi-vote
+          </v-icon>
+          Live Results
+        </v-btn>
+        </button>
+        </div>
 
       <div style = "padding-top: 4%">
         <v-img
@@ -300,7 +328,7 @@ export default {
   width: 50%;
   margin: auto;
   margin-top: 0px;
-  font-size: 5em;
+  font-size: 4em;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 

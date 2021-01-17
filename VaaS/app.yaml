@@ -7,3 +7,14 @@ handlers:
 
 - url: /(.*)
   script: auto
+
+# handlers:
+#   # Serve all static files with urls ending with a file extension
+# - url: /(.*\..+)$ 
+#   static_files: ../frontend/dist/\1
+#   upload: dist/(.*\..+)$  # catch all handler to index.html
+# # - url: /.*
+# #   static_files: dist/index.html
+# #   upload: dist/index.html
+# - url: /(.*)
+#   script: auto
