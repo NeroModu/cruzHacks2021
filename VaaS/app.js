@@ -54,6 +54,12 @@ app.post('/verifyandvote/', (req, res) =>{
     let measure = body.result[0].measureID;
     let choice = body.result[0].vote;
     var hashedID;
+    var gPayLoad;
+    var userID;
+    var verified = false;
+    let verificationError = false;
+    let contractError = false;
+    let message = '';
 
     console.log(measure);
     console.log(choice);
@@ -67,7 +73,13 @@ app.post('/verifyandvote/', (req, res) =>{
     }
 
     async function writeVote(hashh){
-        await contractHandler.castVote(hashh, choice);
+        let hasVoted = await contractHandler.userHasVoted(hashh);
+        if(!hasVoted){
+            await contractHandler.castVote(hashh, choice);
+        }else{
+            contractError = true;
+        }
+        sendResponse();
     }
 
     //verify that the user is logged in . . . 
@@ -84,34 +96,64 @@ app.post('/verifyandvote/', (req, res) =>{
         console.log(payload);
         console.log(userid);
         //hashedId = hashID(userid);
-        return userid;
+        return [payload, userid];
         // If request specified a G Suite domain:
         // const domain = payload['hd'];
     }
 
-    let verificationError = false;
-    let contractError = false;
-    let message = '';
+
 
     function sendResponse(){
         if(verificationError){
-            message = "Verification Error";
+            message = "VError";
         }else if(contractError){
-            message = ("There was an issue writing your vote to the smart conttract! You probably already voted and can't vote again . . .");
+            // message = ("There was an issue writing your vote to the smart conttract! You probably already voted and can't vote again . . .");
+            message = "CError";
         }else{
-            message = hashedID;
+            message = hashID(userID);
         }
         res.status(200).send(message).end;
     }
 
-    verify()
-        .catch(console.log("VERIFICATION ERROR"), verificationError = true)
-        .then((value) => {
-            console.log("value(uid) = ", value), hashedID = hashID(value), await writeVote(hashedID)})
-        .catch("ERROR WRITING TO CONTRACT", contractError = "true").then(
-            console.log("success"), 
-            sendResponse()
-        );
+    // verify()
+    //     .catch(console.log("VERIFICATION ERROR"), verificationError = true)
+    //     .then((value) => {
+    //         console.log("value(uid) = ", value), hashedID = hashID(value), await writeVote(hashedID)})
+    //     .catch("ERROR WRITING TO CONTRACT", contractError = "true").then(
+    //         console.log("success"), 
+    //         sendResponse()
+    //     );
+
+
+    verify().then((value) => {
+       console.log("AFTER AWAIT -----------------------------");
+       gPayLoad = value[0];
+       userID = value[1];
+
+       //verify the payload from google
+       if(gPayLoad.hd == "ucsc.edu" && gPayLoad.aud == "910587914066-a79tgllt99stia0bqfihhhbf4vb3u812.apps.googleusercontent.com"){
+            verified = true;
+       }
+
+       console.log(gPayLoad);
+       console.log(userID);
+    //    if(userID == 117307928685130358568){
+    //        userID == "myNewID";
+    //    }
+
+       console.log(verified.toString());
+
+       if(!verified){
+           verificationError = true;
+           sendResponse();
+       }else{
+           writeVote(hashID(userID));
+       } 
+   });
+
+   
+
+
 });
 
 
