@@ -104,17 +104,14 @@ app.post('/verifyandvote/', (req, res) =>{
         res.status(200).send(message).end;
     }
 
-    verify().catch(console.log("VERIFICATION ERROR"), verificationError = true).then((value) => {
-        console.log("value(uid) = ", value), hashedID = hashID(value), await writeVote(hashedID)
-    }).catch("ERROR WRITING TO CONTRACT", contractError = "true").then(
-        console.log("success"), 
-        sendResponse()
-    );
-
-    
-   
-    
-    
+    verify()
+        .catch(console.log("VERIFICATION ERROR"), verificationError = true)
+        .then((value) => {
+            console.log("value(uid) = ", value), hashedID = hashID(value), await writeVote(hashedID)})
+        .catch("ERROR WRITING TO CONTRACT", contractError = "true").then(
+            console.log("success"), 
+            sendResponse()
+        );
 });
 
 
