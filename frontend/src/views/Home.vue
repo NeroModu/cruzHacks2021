@@ -5,7 +5,7 @@
         Voting-as-a-Service
         <div style = "text-align: center, width: 50%">
         <p style="font-size: 25px; padding-top: 40px">
-          Using smart contracts on the Ethereum blockchain, VaaS provides a platform for highly secure, audible, transparent, and distributed inter-organization election all while keeping the identity of those who voted private.
+          Using smart contracts on the Ethereum blockchain, VaaS provides a platform for highly secure, audible, transparent, and distributed inter-organization elections all while keeping the identity of those who voted private.
         </p>
         </div>
       </div>
@@ -117,14 +117,102 @@
       </v-card>
 
       <div>
+
+
+        <v-dialog
+        v-model="dialog"
+        persistent
+        max-width="600"
+        max-height="400"
+        >
+        <template v-slot:activator="{ on, attrs }">
+                  <v-btn
+          color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on"
+          @click="sendVote(true)"
+        >
+          Cast Vote(modal)
+        </v-btn>
+        </template>
+        <v-card>
+            <v-card-title 
+            v-show="!loaded" class="headline">
+            Casting Vote . . . .
+            </v-card-title>
+
+            <v-card-title 
+            v-show="loaded && success" class="headline">
+            Thank You for Voting!
+            </v-card-title>
+
+             <v-card-title 
+            v-show="failure" class="headline">
+            Your vote failed.
+            </v-card-title>
+
+             <v-card-subtitle 
+            v-show="failure">
+            If you have already voted, the smart contract can't take multiple submissions.
+            </v-card-subtitle>
+
+            <v-card-subtitle 
+            v-show="loaded && success">
+            Your vote has been successfully cast! Here is your vote receipt: {{receipt}}
+            </v-card-subtitle>
+
+            <v-card-subtitle 
+            v-show="loaded && success">
+            Use your reciept to verify your vote. Your receipt will not be given to you again so save it now if you wish.
+            </v-card-subtitle>
+
+            
+            <v-card-text v-show="!loaded" >Please wait while your vote is being validated.</v-card-text>
+            <div>
+                <v-progress-linear
+                v-show="!loaded"
+                indeterminate
+                background-color="red"
+                color="green"
+            ></v-progress-linear>
+            </div>
+            <v-card-actions>
+            <v-spacer></v-spacer>
+           
+            <v-btn
+                v-show="loaded"
+                color="green darken-1"
+                text
+                @click="dialog = false; push();"
+            >
+                I Understand
+            </v-btn>
+            </v-card-actions>
+        </v-card>
+        </v-dialog>
+
+
+
+
         <v-btn
           style="margin-bottom: 20px"
           depressed
           color="primary"
           @click="sendVote(true)"
         >
-          Cast Votes
+          Cast Vote
         </v-btn>
+
+
+
+
+
+
+
+
+
+
       </div>
     </div>
   </div>
@@ -135,6 +223,7 @@
 import axios from 'axios'
 import {measures} from '../measures'
 import {keys} from '../keys'
+import router from '../router';
 
 export default {
   name: 'Home',
@@ -142,6 +231,11 @@ export default {
     clientID: keys.clientID,
     idToken: 'none',
     signedIn: false,
+    dialog: false,
+    loaded: false,
+    receipt: "myReceipt",
+    success: false,
+    failure: false,
 
     ballot: [
       {measureID: 24, vote: null},
@@ -178,12 +272,23 @@ export default {
       axios.post(keys.URL + 'verifyandvote', send)
         .then(response => {
           // show current results
-          console.log(response);
+          console.log(response.data);
+          if(!(response.data == "VError") && !(response.data == "CError")){
+              this.success = true;
+              this.receipt = response.data;
+          }else{
+              this.failure = true;
+          }
+          this.loaded = true;
         })
         .catch(error => {
           // show error modal
           console.log(error);
+          this.loaded = true;
         });
+    },
+    push(){
+        router.push('/results');
     }
   }
 }
