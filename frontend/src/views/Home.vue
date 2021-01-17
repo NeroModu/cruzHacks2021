@@ -133,7 +133,7 @@
           v-on="on"
           @click="sendVote(true)"
         >
-          Cast Vote(modal)
+          Cast Vote
         </v-btn>
         </template>
         <v-card>
@@ -195,14 +195,6 @@
 
 
 
-        <v-btn
-          style="margin-bottom: 20px"
-          depressed
-          color="primary"
-          @click="sendVote(true)"
-        >
-          Cast Vote
-        </v-btn>
 
 
 
