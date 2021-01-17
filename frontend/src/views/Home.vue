@@ -3,9 +3,11 @@
     <div id="signedOutView" class="vaas-bg" v-show="!signedIn">
       <div class="vaas-heading">
         Voting-as-a-Service
-        <p style="font-size: 20px">
-          Using smart contracts on the Ethereum blockchain, VaaS provides a platform for highly secure, audible, transparent, and distributed inter-organization voting all while keeping the identity of those who voted private.
+        <div style = "text-align: center, width: 50%">
+        <p style="font-size: 25px; padding-top: 40px">
+          Using smart contracts on the Ethereum blockchain, VaaS provides a platform for highly secure, audible, transparent, and distributed inter-organization election all while keeping the identity of those who voted private.
         </p>
+        </div>
       </div>
       <button v-google-signin-button="clientID">
         <v-btn
@@ -22,11 +24,11 @@
         </v-btn>
       </button>
 
-      <div>
+      <div style = "padding-top: 4%">
         <v-img
           src="../assets/undraw_voting.svg"
-          width="450px"
-          style="margin-left: 100px"
+          width="500px"
+          style="margin: auto"
         ></v-img>
       </div>
     </div>
@@ -197,7 +199,9 @@ export default {
 }
 
 .vaas-heading {
-  margin: 50px;
+  padding-top: 30px;
+  width: 50%;
+  margin: auto;
   margin-top: 0px;
   font-size: 5em;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -205,6 +209,7 @@ export default {
 
 .vaas-bg {
   background-image: url('https://i.imgur.com/IGtqYwB.png');
-  background-size: cover;
+  background-size: 45%;
+  background-position: right top;
 }
 </style>
