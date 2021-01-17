@@ -1,8 +1,11 @@
 <template>
   <div class="home">
-    <div id="signedOutView" v-show="!signedIn">
-      <div>
-        <img alt="Vue logo" src="../assets/logo.png">
+    <div id="signedOutView" class="vaas-bg" v-show="!signedIn">
+      <div class="vaas-heading">
+        Voting-as-a-Service
+        <p style="font-size: 20px">
+          Using smart contracts on the Ethereum blockchain, VaaS provides a platform for highly secure, audible, transparent, and distributed inter-organization voting all while keeping the identity of those who voted private.
+        </p>
       </div>
       <button v-google-signin-button="clientID">
         <v-btn
@@ -18,10 +21,18 @@
           Sign In
         </v-btn>
       </button>
+
+      <div>
+        <v-img
+          src="../assets/undraw_voting.svg"
+          width="450px"
+          style="margin-left: 100px"
+        ></v-img>
+      </div>
     </div>
 
     <div id="signedInView" v-show="signedIn">
-      <div style="margin-bottom: 30px; margin-top: 10px">
+      <div style="margin-bottom: 30px; margin-top: 10px; color: gray">
         Organization: UCSC
       </div>
       <h2 style="margin-bottom: 20px">
@@ -51,7 +62,7 @@
           <a href="https://kovan.etherscan.io/address/0x32078e498ce709b708230311c5f0dc5da89bacde" 
              target="_blank" style="text-decoration: none;">
             <v-btn
-              color="primary lighten-2"
+              color="primary"
               text
             >
               View Contract
@@ -183,5 +194,17 @@ export default {
 
 .vaas-card {
   text-align: left;
+}
+
+.vaas-heading {
+  margin: 50px;
+  margin-top: 0px;
+  font-size: 5em;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.vaas-bg {
+  background-image: url('https://i.imgur.com/IGtqYwB.png');
+  background-size: cover;
 }
 </style>

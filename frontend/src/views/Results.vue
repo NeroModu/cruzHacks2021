@@ -14,6 +14,18 @@
         Results
       </v-card-title>
             
+      <span style="float: right; margin-top: 10px">
+        <a href="https://kovan.etherscan.io/address/0x32078e498ce709b708230311c5f0dc5da89bacde" 
+          target="_blank" style="text-decoration: none">
+          <v-btn
+            color="primary"
+            text
+          >
+            View Contract
+          </v-btn>
+        </a>
+      </span>
+
       <v-card-title>
         Measure {{measureInfo.ID}}
       </v-card-title>
