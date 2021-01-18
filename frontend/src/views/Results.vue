@@ -58,7 +58,7 @@
           ></v-progress-linear>
         </div>
         <div style="text-align: center; color: gray" v-show="!loaded">
-          FETCHING RESULTS FROM THE CONTRACT ON THE BLOCKCHAIN...
+          loading . . . fetching results from the smart contract
         </div>
       </div>
 
