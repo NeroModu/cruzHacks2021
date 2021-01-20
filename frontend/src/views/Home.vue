@@ -5,7 +5,7 @@
         Voting-as-a-Service
         <div style = "text-align: center, width: 100%">
         <p style="font-size: 20px; padding-top: 40px">
-          Using smart contracts on the Ethereum blockchain, VaaS provides a platform for highly secure, audible, transparent, and distributed inter-organization elections all while keeping the identity of those who voted private.
+          Using smart contracts on the Ethereum blockchain, VaaS provides a platform for highly secure, auditable, transparent, and distributed inner-organization elections all while keeping the identity of those who voted private.
         </p>
 
         <p style="font-size: 20px; padding-top: 10px">
