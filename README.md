@@ -1,4 +1,5 @@
 # Voting-as-a-Service
+NeroModu's entry to [CruzHacks](https://www.cruzhacks.com/) 2021.
 
 **Check it out live**
 
@@ -8,9 +9,13 @@
 
 [alterternate-link](https://agitated-shockley-840958.netlify.app/)
 
+<p>
+  <a href="https://devpost.com/software/voting-as-a-service">
+    <img src="https://marketing-challengepost.netdna-ssl.com/assets/reimagine2/devpost-logo-f9249efcf3c5cb05b96b64c292f54734.svg" alt="Link to submission" width="220" height="60">
+  </a>
+</p>
 
-### Abstract
-
+## Abstract
 How can we ensure trust, transparency and auditability within elections?
 How does an individual verify that their vote was counted in the way intended while upholding voter privacy?
 How can we prevent double voting and voter fraud?
@@ -46,3 +51,9 @@ This is how VaaS works:
 6. Vaas writes the user’s vote to the smart contract along with the hashed identity token in order to preserve privacy
 
 7. VaaS then provides a receipt of the vote to the user containing hashID that the user can use to verify their vote if they please
+
+## Ranking
+We are proud to announce that V.a.a.S. recieved the following sponsor awards!
+* [MLH](https://mlh.io/) - Best Use of Google Cloud Platform
+* [1517](https://www.1517fund.com/) - Most Novel Hack
+* [UCSC CEID](https://cied.ucsc.edu/) - Grand for Further Development
