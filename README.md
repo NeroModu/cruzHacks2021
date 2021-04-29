@@ -56,4 +56,4 @@ This is how VaaS works:
 We are proud to announce that V.a.a.S. recieved the following sponsor awards!
 * [MLH](https://mlh.io/) - Best Use of Google Cloud Platform
 * [1517](https://www.1517fund.com/) - Most Novel Hack
-* [UCSC CEID](https://cied.ucsc.edu/) - Grand for Further Development
+* [UCSC CEID](https://cied.ucsc.edu/) - Grant for Further Development
